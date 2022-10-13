@@ -1,5 +1,9 @@
 [BITS 32]
-load32:
+global _start
+CODE_SEG equ 0x08
+DATA_SEG equ 0x10
+
+_start:
     ;PROTECTED MODE - can't access BIOS anymore.
     ; can't access for example DISK as we did via BIOS.
     ; need to write our own disk driver to load rest of the kernel.
@@ -17,5 +21,5 @@ load32:
     in al, 0x92
     or al, 2
     out 0x92, al
-    
+
     jmp $
