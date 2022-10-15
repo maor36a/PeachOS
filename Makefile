@@ -12,6 +12,7 @@ all: ./bin/boot.bin ./bin/kernel.bin
 	dd if=/dev/zero bs=512 count=100 >> ./bin/os.bin
 
 ./bin/kernel.bin: $(FILES)
+# takes all our FILES and creates an object file of it. link object file
 	i686-elf-ld -g -relocatable $(FILES) -o ./build/kernelfull.o
 	i686-elf-gcc -T ./src/linker.ld -o ./bin/kernel.bin -ffreestanding -O0 -nostdlib ./build/kernelfull.o
 
@@ -24,3 +25,7 @@ all: ./bin/boot.bin ./bin/kernel.bin
 
 clean:
 	rm -rf ./bin/boot.bin
+	rm -rf ./bin/kernel.bin
+	rm -rf ./bin/os.bin
+	rm -rf ${FILES}
+	rm -rf ./bikn/kernelfull.o
