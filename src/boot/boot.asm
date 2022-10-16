@@ -123,7 +123,7 @@ ata_lba_read:
 ; We need to read 256 words at a time
     mov ecx, 256
     mov dx, 0x1F0
-    rep insw
+    rep insw ;insw=Input from port to String. reads words. 256 words = 512 bytes = 1 sector each time. REP does that ECX times.
     pop ecx
     loop .next_sector
     ; End of reading sectors into memory
