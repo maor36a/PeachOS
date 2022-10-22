@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "kernel.h"
+#include "idt/idt.h"
+#include "io/io.h"
 
 
 uint16_t* video_mem = 0;
@@ -61,4 +63,7 @@ void kernel_main() {
     terminal_initialize();
     char* str = "Hello blah blah! \nHey \nBye";
     print(str);
+
+    // Initialize the interrupt descriptor table
+    idt_init();
 }
