@@ -4,13 +4,16 @@ BITS 16
 CODE_SEG equ gdt_code - gdt_start
 DATA_SEG equ gdt_data - gdt_start
 
+BIOS_PARAMETER_BLOCK_REQ_SIZE equ 33
+
 _start:
     jmp short start
     nop
 
-times 33 db 0
+times BIOS_PARAMETER_BLOCK_REQ_SIZE db 0
 
 start:
+    ; jmp X:Y, sets CS(code segment) reg to equal X, and IP(instruction pointer) reg to equal Y
     jmp 0:step2
 
 step2:
@@ -21,7 +24,6 @@ step2:
     mov ss, ax
     mov sp, 0x7c00
     sti
-
 
 .load_protected:
     cli
