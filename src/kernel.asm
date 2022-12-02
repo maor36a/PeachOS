@@ -34,8 +34,7 @@ _start:
     out 0x21, al
     ; End remap of the master PIC
 
-    ; Enable interrupts
-    sti
+    ; Enable interrupts will be called after we set the interrupts vector table
 
     call kernel_main
 
