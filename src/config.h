@@ -12,6 +12,8 @@
 #define PEACHOS_HEAP_ADDRESS        0x01000000
 #define PEACHOS_HEAP_TABLE_ADDRESS  0x00007E00
 
+#define PEACHOS_SECTOR_SIZE 512
+
 /** 
  * There are two main things that we want to map:
  * 1. kernel_heap_table.entries -> will be pointing at the total number of table entires.
